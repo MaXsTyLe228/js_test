@@ -1,14 +1,55 @@
 {
   "name": "js-test",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\"",
+    "prepare": "husky install",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
+  "types": [
+    {
+      "type": "feat",
+      "section": "Features"
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "chore",
+      "hidden": true
+    },
+    {
+      "type": "docs",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "hidden": true
+    },
+    {
+      "type": "refactor",
+      "hidden": true
+    },
+    {
+      "type": "perf",
+      "hidden": true
+    },
+    {
+      "type": "test",
+      "hidden": true
+    }
+  ],
+  "commitUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/commits/{{hash}}",
+  "compareUrlFormat": "https://github.com/mokkapps/changelog-generator-demo/compare/{{previousTag}}...{{currentTag}}",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -26,6 +67,8 @@
     "react-dom": "18.1.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.4",
+    "@commitlint/config-conventional": "^16.2.4",
     "@types/node": "17.0.30",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
@@ -37,6 +80,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
+    "standard-version": "^9.3.2",
     "typescript": "4.6.4"
   }
 }
